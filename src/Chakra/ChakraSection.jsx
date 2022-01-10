@@ -1,17 +1,19 @@
 import React from "react";
 
-import { Box } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 
 function ChakraSection() {
   return (
-    <div>
+    <Container>
       <h2>ChakraSection</h2>
-      <Box m={2}>Tomato</Box>
-      <Box maxW="960px" mx="auto" text="center">
+      <Box p={20} align="center">
+        Tomato
+      </Box>
+      <Box p={5} align="center" bg={["brand.red", "brand.blue", "brand.green"]}>
         <h3>Box 2</h3>
       </Box>
-      <Box m={[2, 3]} />
-    </div>
+      <Box m={[2, 3]}>Apples</Box>
+    </Container>
   );
 }
 

@@ -4,21 +4,22 @@ import ChakraSection from "./ChakraSection";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const colors = {
-	brand: {
-		900: "#1a365d",
-		800: "#153e75",
-		700: "#2a69ac",
-	},
+  brand: {
+    red: "#ec0000",
+    blue: "#001dff",
+    green: "#028201",
+    offWhite: "#dcdcdc",
+  },
 };
 
 const theme = extendTheme({ colors });
 
 function Chakra() {
-	return (
-		<ChakraProvider theme={theme}>
-			<ChakraSection />
-		</ChakraProvider>
-	);
+  return (
+    <ChakraProvider theme={theme}>
+      <ChakraSection />
+    </ChakraProvider>
+  );
 }
 
 export default Chakra;
