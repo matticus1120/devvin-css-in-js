@@ -17,6 +17,7 @@
     "eslint": "^8.6.0",
     "flowtype": "^2.0.0",
     "framer-motion": "^5.5.5",
+    "immer": "^9.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
