@@ -1,5 +1,4 @@
 import Emotion from "./Emotion";
-import Chakra from "./Chakra";
 import "./App.css";
 
 function App() {
@@ -7,8 +6,6 @@ function App() {
     <div id="body">
       <h1>Devvin on CSS in JS</h1>
       <Emotion />
-      <hr />
-      <Chakra />
     </div>
   );
 }
