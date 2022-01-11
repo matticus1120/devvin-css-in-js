@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^1.7.4",
     "@emotion/css": "^11.7.1",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -16,9 +17,12 @@
     "@testing-library/user-event": "^13.5.0",
     "eslint": "^8.6.0",
     "flowtype": "^2.0.0",
+    "framer-motion": "^5.5.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "styled-components": "^5.3.3",
+    "styled-system": "^5.1.5",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
