@@ -28,14 +28,16 @@ function ButtonGroup() {
 function PageSection() {
   const { count, isMaxReached } = usePageContext();
   return (
-    <div>
+    <section>
       <h2>Page Counters!</h2>
       <ButtonGroup />
       <p>
-        The total count is:{" "}
-        <strong>{!isMaxReached ? count : "Complete!"}</strong>
+        <span id="the-total-count">The total count is: </span>
+        <strong aria-labelledby="the-total-count">
+          {!isMaxReached ? count : "Complete!"}
+        </strong>
       </p>
-    </div>
+    </section>
   );
 }
 

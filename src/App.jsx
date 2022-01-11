@@ -3,6 +3,8 @@ import Emotion from "./Emotion";
 import Page from "./Page";
 import "./App.css";
 
+import { usePageContext } from "./PageContext";
+
 function App() {
   return (
     <div id="body">

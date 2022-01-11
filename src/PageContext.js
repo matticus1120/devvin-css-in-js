@@ -7,7 +7,7 @@ import React, {
   useEffect,
 } from "react";
 
-const PageContext = createContext({});
+export const PageContext = createContext({});
 
 export function PageContextProvider({ children }) {
   const [count, setCount] = useState(0);
@@ -38,6 +38,12 @@ export function PageContextProvider({ children }) {
   return <PageContext.Provider value={value}>{children}</PageContext.Provider>;
 }
 
-export const usePageContext = () => {
-  return useContext(PageContext);
-};
+export function usePageContext() {
+  const context = useContext(PageContext);
+  // context.count will be undefined if usePageContext isn't used
+  // in the necessary provider - throw an error if that is the case.
+  if (context.count === undefined) {
+    throw new Error("usePageContext must be used in PageContextProvider");
+  }
+  return context;
+}

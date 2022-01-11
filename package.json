@@ -12,6 +12,7 @@
     "@linaria/shaker": "^3.0.0-beta.15",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
     "eslint": "^8.6.0",
     "flowtype": "^2.0.0",
@@ -19,6 +20,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3",
     "styled-system": "^5.1.5",
     "web-vitals": "^2.1.2"
@@ -45,6 +48,7 @@
     "@babel/eslint-parser": "^7.16.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
     "eslint-plugin-flowtype": "^8.0.3",
+    "jest-watch-typeahead": "^0.6.5",
     "react-refresh": "^0.11.0"
   }
 }
