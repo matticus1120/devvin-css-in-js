@@ -44,6 +44,10 @@ export default {
     "light-gray": "#eee",
     "near-white": "#f4f4f4",
     white: "#fff",
+    blue: "#0008ff",
+    darkBlue: "#000352",
+    red: "#f20000",
+    darkRed: "#7e0000",
     transparent: "transparent",
     blacks: [
       "rgba(0,0,0,.0125)",
