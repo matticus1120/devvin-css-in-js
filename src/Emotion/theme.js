@@ -1,5 +1,5 @@
 export default {
-  breakpoints: [32, 48, 64],
+  //   breakpoints: [32, 48, 64],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fontSizes: [12, 14, 16, 20, 24, 36, 48, 80, 96],
   fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
@@ -44,6 +44,10 @@ export default {
     "light-gray": "#eee",
     "near-white": "#f4f4f4",
     white: "#fff",
+    blue: "#0008ff",
+    darkBlue: "#000352",
+    red: "#f20000",
+    darkRed: "#7e0000",
     transparent: "transparent",
     blacks: [
       "rgba(0,0,0,.0125)",

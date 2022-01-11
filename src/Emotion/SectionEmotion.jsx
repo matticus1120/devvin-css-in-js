@@ -36,7 +36,7 @@ function SectionEmotion(props) {
 				<h3
 					css={{
 						backgroundColor: theme.colors.silver,
-						color: theme.colors.white,
+						color: [theme.colors.white, theme.colors.red, theme.colors.blue],
 					}}>
 					Sweet h3 bro
 				</h3>
