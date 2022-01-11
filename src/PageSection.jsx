@@ -1,33 +1,42 @@
 import React from "react";
 import { usePageContext } from "./PageContext";
 
-function Page() {
-  const { increaseCount, decreaseCount, count } = usePageContext();
+function ButtonGroup() {
+  const { increaseCount, decreaseCount, isMaxReached } = usePageContext();
   return (
     <div>
-      <h2>Page Counters!</h2>
-      <hr />
       <button
         onClick={() => {
           increaseCount();
         }}
+        disabled={isMaxReached ? true : false}
       >
         Increase The Count
       </button>
-      <hr />
       <button
         onClick={() => {
           decreaseCount();
         }}
+        disabled={isMaxReached ? true : false}
       >
         Decrease The Count
       </button>
-      <br />
-      <h3>
-        The total count is: <strong>{count}</strong>
-      </h3>
     </div>
   );
 }
 
-export default Page;
+function PageSection() {
+  const { count, isMaxReached } = usePageContext();
+  return (
+    <div>
+      <h2>Page Counters!</h2>
+      <ButtonGroup />
+      <p>
+        The total count is:{" "}
+        <strong>{!isMaxReached ? count : "Complete!"}</strong>
+      </p>
+    </div>
+  );
+}
+
+export default PageSection;

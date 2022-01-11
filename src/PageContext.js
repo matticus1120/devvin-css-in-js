@@ -4,12 +4,14 @@ import React, {
   useState,
   useMemo,
   useCallback,
+  useEffect,
 } from "react";
 
 const PageContext = createContext({});
 
 export function PageContextProvider({ children }) {
   const [count, setCount] = useState(0);
+  const [isMaxReached, setIsMaxReached] = useState(false);
 
   const increaseCount = useCallback(() => {
     setCount(count + 1);
@@ -19,11 +21,16 @@ export function PageContextProvider({ children }) {
     setCount(count - 1);
   }, [count]);
 
+  useEffect(() => {
+    if (count === 9) setIsMaxReached(true);
+  }, [count]);
+
   const value = useMemo(
     () => ({
       increaseCount,
       decreaseCount,
       count,
+      isMaxReached,
     }),
     [increaseCount, decreaseCount, count]
   );
@@ -32,11 +39,5 @@ export function PageContextProvider({ children }) {
 }
 
 export const usePageContext = () => {
-  if (PageContext !== undefined) {
-    return useContext(PageContext);
-  } else {
-    throw new Error(
-      "usePageContext must be used in a PageContextProvider component."
-    );
-  }
+  return useContext(PageContext);
 };

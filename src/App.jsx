@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import Emotion from "./Emotion";
 import Page from "./Page";
 import "./App.css";
