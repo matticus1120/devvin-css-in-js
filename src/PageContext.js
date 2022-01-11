@@ -13,11 +13,11 @@ export function PageContextProvider({ children }) {
 
   const increaseCount = useCallback(() => {
     setCount(count + 1);
-  }, []);
+  }, [count]);
 
   const decreaseCount = useCallback(() => {
     setCount(count - 1);
-  }, []);
+  }, [count]);
 
   const value = useMemo(
     () => ({
