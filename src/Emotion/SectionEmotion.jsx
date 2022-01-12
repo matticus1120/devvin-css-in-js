@@ -1,36 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import { css, useTheme } from "@emotion/react";
-
-function useCSSObject(props) {
-	const { m, mt, p, pb, color, bg, fontSize, ...rest } = props;
-	return [
-		{
-			margin: m,
-			marginTop: mt,
-			padding: p,
-			paddingBottom: pb,
-			color: color,
-			background: bg,
-			fontSize: fontSize,
-		},
-		rest,
-	];
-}
-
-function Button({ children, ...props }) {
-	const [cssProps, forwardProps] = useCSSObject(props);
-	return (
-		<button css={cssProps} {...forwardProps}>
-			{children}
-		</button>
-	);
-}
+import { helpers } from "./helpers";
+import { Button, Container } from "./components";
 
 function SectionEmotion(props) {
 	const theme = useTheme();
 	return (
-		<div>
+		<Container>
 			<h2>Sweet Emotion</h2>
 			<div>
 				<h3
@@ -53,7 +30,7 @@ function SectionEmotion(props) {
 					Click Me
 				</Button>
 			</div>
-		</div>
+		</Container>
 	);
 }
 
