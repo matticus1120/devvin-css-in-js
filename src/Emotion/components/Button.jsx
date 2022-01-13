@@ -1,20 +1,31 @@
 /** @jsxImportSource @emotion/react */
-import { css, useTheme } from "@emotion/react";
+import { useMemo } from "react";
+import { useTheme } from "@emotion/react";
 import { useCSSObject } from "../helpers";
 
 export function Button({ children, ...props }) {
   const [additionalCssProps, forwardProps] = useCSSObject(props);
   const theme = useTheme();
+  const buttonStyles = useMemo(() => {
+    return {
+      borderRadius: theme.shape[4],
+      border: "none",
+      outline: "none",
+      padding: "8px 16px 8px 16px",
+      backgroundColor: theme.colors.darkBlue,
+      color: theme.colors.white,
+      ...additionalCssProps,
+    };
+  }, [additionalCssProps]);
+
+  const { isDisabled, isSpinning, as, ...otherProps } = forwardProps;
+
+  const TagName = as ? as : "button";
+
   return (
-    <button
-      css={{
-        borderRadius: theme.shape[4],
-        outline: "none",
-        ...additionalCssProps,
-      }}
-      {...forwardProps}
-    >
+    <TagName css={buttonStyles} disabled={false} {...otherProps} role="button">
       {children}
-    </button>
+      {isSpinning && <span>SPIN</span>}
+    </TagName>
   );
 }
