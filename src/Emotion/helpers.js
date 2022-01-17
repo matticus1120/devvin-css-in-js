@@ -82,8 +82,8 @@ let name = "Techsith";
 let age = 35;
 
 function transform(staticTags, ...tags) {
-	console.log(staticTags); // ["", " my name is ", " and I am ", ""]
-	console.log(tags); //["Hi", "Techsith", 35]
+	// console.log(staticTags); // ["", " my name is ", " and I am ", ""]
+	// console.log(tags); //["Hi", "Techsith", 35]
 }
 export function tryTaggedTemplateLiterals() {
 	transform`${greetings} my name is ${name} and I am ${age}`;

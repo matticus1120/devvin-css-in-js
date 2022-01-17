@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { css, useTheme } from "@emotion/react";
 import { tryTaggedTemplateLiterals } from "./helpers";
-import { Button, Container } from "./components";
+import { Button, Container, Box } from "./components";
 
 function SectionEmotion(props) {
 	const theme = useTheme();
@@ -12,7 +12,7 @@ function SectionEmotion(props) {
 	return (
 		<Container>
 			<h2>Sweet Emotion</h2>
-			<div>
+			<Box mt="2" mb="24">
 				<h3
 					css={{
 						backgroundColor: theme.colors.silver,
@@ -33,7 +33,7 @@ function SectionEmotion(props) {
 					}}>
 					Click Me
 				</Button>
-			</div>
+			</Box>
 		</Container>
 	);
 }
