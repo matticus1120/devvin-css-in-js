@@ -104,7 +104,7 @@ export function toCSSObject(props) {
 		if (space.hasOwnProperty(i)) {
 			const value = validatecssKey(space[i].scale, props[i]);
 			if (!!value) {
-				styles[space[i].property] = value;
+				styles[space[i].property] = `var(--rh-${i}-${value})`;
 			} else {
 				consoleError("invalidStylePropValue", [props[i], i, space[i].scale]);
 			}
