@@ -14,16 +14,15 @@ export function getStylePropCssVar(propKey, propValue) {
     ...space,
     ...color,
   };
-  // check for propKey in allStyleProps
-  // grab the value of "scale" in matching object
-  // Validate that the value is in the theme using "scale" and "propValue"
-  // Valid value = !!theme[scale][propValue]
-  // If value, return new object
   /**
-  {
-	  [allStyleProps.propKey.property]: theme[scale][propValue]
-	  [allStyleProps.propKey.property]: getCSSVarFunctionString(scale, propValue)
-  }
+   	1. check for propKey in allStyleProps
+	2. grab the value of "scale" in matching object
+	3. Validate that the value is in the theme using "scale" and "propValue"
+	4. Valid value = isValidThemeValue(allStyleProps[propKey].scale, propValue)
+	5. If valid, return new object
+	{
+		[allStyleProps.propKey.property]: getCSSVarFunctionString(allStyleProps[propKey].scale, propValue)
+	}
  */
 }
 
