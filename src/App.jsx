@@ -7,7 +7,6 @@ function App() {
     <div id="body">
       <h1>Devvin on CSS in JS</h1>
       <Emotion />
-      <Chakra />
     </div>
   );
 }
