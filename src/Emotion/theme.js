@@ -13,7 +13,7 @@ const theme = {
 		"sprk.black.20": { value: "#C8102E" },
 		"sprk.black.30": { value: "#C8102E" },
 		"sprk.black.40": { value: "#C8102E" },
-		"sprk.black.50": { value: "#C8102E" },
+		"sprk.black.50": { value: "blue" },
 		"sprk.black.60": { value: "#C8102E" },
 		"sprk.black.70": { value: "#C8102E" },
 		"sprk.black.80": { value: "#C8102E" },

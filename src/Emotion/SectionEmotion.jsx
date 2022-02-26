@@ -1,40 +1,35 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect } from "react";
-import { css, useTheme } from "@emotion/react";
-import { tryTaggedTemplateLiterals } from "./helpers";
 import { Button, Container, Box } from "./components";
+import { css } from "@emotion/react";
+import { getThemeCSSVars } from "./system";
 
 function SectionEmotion(props) {
-  const theme = useTheme();
-  useEffect(() => {
-    tryTaggedTemplateLiterals();
-  }, []);
-  return (
-    <Container>
-      <h2>Sweet Emotion</h2>
-      <Box>
-        <h3
-          css={{
-            marginBottom: "30px",
-          }}
-        >
-          Sweet h3 bro
-        </h3>
-        <Button
-          bg="red"
-          sx={{
-            backgroundColor: "hot-pink",
-          }}
-          isDisabled={false}
-          onClick={() => {
-            alert("You clicked me");
-          }}
-        >
-          Click Me
-        </Button>
-      </Box>
-    </Container>
-  );
+	const varArray = getThemeCSSVars();
+	let cssVariables = "";
+	for (let i in varArray) {
+		cssVariables += varArray[i];
+	}
+	return (
+		<div
+			css={css`
+				${cssVariables}
+			`}>
+			<h2>Sweet Emotion</h2>
+			<Box
+				mb="36"
+				mt="12"
+				pl="96"
+				title="Wuuuut ya I tink that is cool"
+				color="sprk.black.50"
+				onClick={() => {
+					console.log("oh ya");
+				}}>
+				hi~
+			</Box>
+			<h3>Oh ya</h3>
+		</div>
+	);
 }
 
 export default SectionEmotion;

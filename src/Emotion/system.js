@@ -1,6 +1,33 @@
 import { space, color } from "./config";
 import theme from "./theme";
 
+export function parseStyleProps(props) {
+	const styleProps = {};
+	const forwardProps = {};
+
+	Object.entries(props).forEach((entry) => {
+		const [key, value] = entry;
+		if (isStyleProp(key)) {
+			const [cssProperty, cssValue] = getStylePropCssVar(key, value);
+			styleProps[cssProperty] = cssValue;
+		} else {
+			forwardProps[key] = value;
+		}
+	});
+
+	return [styleProps, forwardProps];
+}
+
+const getAllStyleProps = () => ({
+	...space,
+	...color,
+});
+
+const isStyleProp = (propKey) => {
+	const allStyleProps = getAllStyleProps();
+	return allStyleProps.hasOwnProperty(propKey) ? allStyleProps[propKey] : false;
+};
+
 /**
  * Style Props tools
  *
@@ -10,19 +37,7 @@ import theme from "./theme";
  * covert {color: "sprk.purple.deep"} to {color: "var(--rh-colors-sprk_purple_dark)"}
  */
 export function getStylePropCssVar(propKey, propValue) {
-	const allStyleProps = {
-		...space,
-		...color,
-	};
-
-	const styleProp = allStyleProps.hasOwnProperty(propKey)
-		? allStyleProps[propKey]
-		: false;
-
-	if (!styleProp) {
-		throwError("invalidStyleProp", [propKey]);
-		return false;
-	}
+	const allStyleProps = getAllStyleProps();
 
 	const isValueInTheme = isValidThemeValue(
 		allStyleProps[propKey].scale,
@@ -30,8 +45,7 @@ export function getStylePropCssVar(propKey, propValue) {
 	);
 
 	if (!isValueInTheme) {
-		throwError("invalidThemeValue", [propValue]);
-		return false;
+		throwWarning("invalidThemeValue", [propValue]);
 	}
 
 	const CSSVarFunctionString = getCSSVarFunctionString(
@@ -39,7 +53,7 @@ export function getStylePropCssVar(propKey, propValue) {
 		propValue
 	);
 
-	return { [allStyleProps[propKey].property]: CSSVarFunctionString };
+	return [allStyleProps[propKey].property, CSSVarFunctionString];
 }
 
 /**
@@ -50,7 +64,7 @@ export function getStylePropCssVar(propKey, propValue) {
  * Validates that a given themeKey and themeValueKey are found within the theme
  */
 export function isValidThemeValue(themeKey, themeValueKey) {
-	return !!theme?.[themeKey]?.[themeValueKey];
+	return Boolean(theme?.[themeKey]?.[themeValueKey]);
 }
 
 /**
@@ -120,6 +134,9 @@ const generateErrorMessage = (staticTags, ...tags) => {
 	return str.join("");
 };
 
+/**
+ * Error Messages
+ */
 const getErrorMessage = {
 	invalidStyleProp: (values) => {
 		const [styleProp] = values;
@@ -131,7 +148,13 @@ const getErrorMessage = {
 	},
 };
 
-const throwError = (errorType, values) => {
+const throwWarning = (errorType, values) => {
 	const message = getErrorMessage[errorType](values);
-	throw new Error(message);
+	console.warn(message);
 };
+
+/**
+ * TODO: Add psuedo selectors
+ *
+ * @chakra-ui/styled-system/src/pseudos.ts
+ */

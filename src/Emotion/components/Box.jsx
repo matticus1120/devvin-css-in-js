@@ -1,21 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import { useMemo } from "react";
 import { css, useTheme } from "@emotion/react";
+import { parseStyleProps } from "../system";
 
-export function Box({ children, sx, ...props }) {
-  const boxStyles = useMemo(() => {
-    return {
-      border: "solid thin",
-    };
-  }, [sx]);
-  const as = false;
-  const TagName = as ? as : "div";
+export function Box({ children, as = false, ...props }) {
+	const TagName = as ? as : "div";
+	const [styleProps, forWardProps] = parseStyleProps(props);
 
-  const otherProps = {};
+	const boxStyles = {
+		...styleProps,
+		border: "solid thin",
+		marginRight: "20px",
+	};
 
-  return (
-    <TagName css={boxStyles} {...otherProps}>
-      {children}
-    </TagName>
-  );
+	return (
+		<TagName css={boxStyles} {...forWardProps}>
+			{children}
+		</TagName>
+	);
 }
